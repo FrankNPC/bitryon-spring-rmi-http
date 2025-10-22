@@ -29,11 +29,11 @@
 > AccountServiceImpl.login -> account/login.
 > method name in the service should be different.
 
- - The parameters right on the method in types of primitives will be on the URL as query string.
+ - The parameters right on the method in types of primitives will be in the URL as query string.
  
 > keeping the parameter names by [-parameters].
 
- - Configure serializer and deserializer if needed or leave if to default.
+ - Configure serializer and deserializer if needed or leave it to default.
  
 > See [RestClient.builder().messageConverters(HttpMessageConverter)](https://github.com/FrankNPC/bitryon-spring-rmi-http/blob/main/src/main/java/io/bitryon/spring/rmi/http/subscriber/AbstractInvokerClient.java#L103)
 
