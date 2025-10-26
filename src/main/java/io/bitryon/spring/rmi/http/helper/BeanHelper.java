@@ -1,4 +1,4 @@
-package io.bitryon.spring.rmi.http;
+package io.bitryon.spring.rmi.http.helper;
 
 import java.lang.annotation.Annotation;
 import java.util.Set;
@@ -32,4 +32,5 @@ public class BeanHelper {
 	public static String parseMethodName(Provider methodProvider, String serviceName, String methodName) {
 		return methodProvider.value() + parseMethodName(serviceName, methodName);
 	}
+
 }

@@ -8,6 +8,7 @@ import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import io.bitryon.spring.rmi.http.helper.BeanHelper;
 import io.bitryon.spring.rmi.http.prodiver.Provider;
 
 @Provider("/api/v1")

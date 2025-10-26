@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.bitryon.spring.rmi.http.HttpHeaderTransporter;
+import io.bitryon.spring.rmi.http.helper.MethodHandlerHelper;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -54,7 +55,7 @@ public class ServiceProviderInvoker {
 		return errorHandler;
 	}
 	
-	public ResponseEntity<String> get(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ResponseEntity<String> get(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		URI url = URI.create(request.getRequestURL().toString());
 		String path = url.getPath();
 		if (path==null || !path.matches("^/[a-zA-Z0-9_\\-]+/[a-zA-Z0-9_\\-]+.*$")) {
@@ -69,12 +70,12 @@ public class ServiceProviderInvoker {
 		
 		Map<String, String[]> requestMapper = request.getParameterMap();
 		Object[] requestParams = parseParameters(requestMapper, invokeTarget, null);
-		Object ret = invokeTarget.getMethod().invoke(invokeTarget.getBean(), requestParams);
+		Object ret = MethodHandlerHelper.invoke(invokeTarget.getMethod(), invokeTarget.getBean(), requestParams);
 		return ResponseEntity.status(HttpStatus.OK).headers(getHttpHeaders()).body(objectMapper.writeValueAsString(ret));
 	}
 	
 	public ResponseEntity<String> post(HttpServletRequest request, HttpServletResponse response,
-								Map<String, Object> formBody) throws Exception {
+								Map<String, Object> formBody) throws Throwable {
 		URI url = URI.create(request.getRequestURL().toString());
 		String path = url.getPath();
 		if (path==null || !path.matches("^/[a-zA-Z0-9_\\-]+/[a-zA-Z0-9_\\-]+.*$")) {
@@ -89,12 +90,13 @@ public class ServiceProviderInvoker {
 
 		Map<String, String[]> requestMapper = request.getParameterMap();
 		Object[] requestParams = parseParameters(requestMapper, invokeTarget, formBody);
-		Object ret = invokeTarget.getMethod().invoke(invokeTarget.getBean(), requestParams);
+		
+		Object ret = MethodHandlerHelper.invoke(invokeTarget.getMethod(), invokeTarget.getBean(), requestParams);
 		return ResponseEntity.status(HttpStatus.OK).headers(getHttpHeaders()).body(objectMapper.writeValueAsString(ret));
 	}
 
 	HttpHeaders getHttpHeaders() {
-	    HttpHeaders headers = new HttpHeaders();
+		HttpHeaders headers = new HttpHeaders();
 		HttpHeaderTransporter httpHeaderTransporter = getHttpHeaderTransporter();
 		if (httpHeaderTransporter!=null) {
 			Map<String, List<String>> headerValues = httpHeaderTransporter.getHttpHeaders();

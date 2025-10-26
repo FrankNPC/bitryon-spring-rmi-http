@@ -42,7 +42,7 @@ public class ServiceProviderController {
 	public ResponseEntity<String> get(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			return serviceProviderInvoker.get(request, response);
-		} catch (Exception e) {
+		} catch (Throwable e) {
 			try {
 				return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).headers(serviceProviderInvoker.getHttpHeaders()).body(objectMapper.writeValueAsString(serviceProviderInvoker.getErrorHandler().handle(e)));
 			} catch (JsonProcessingException e1) {
@@ -56,7 +56,7 @@ public class ServiceProviderController {
 						@RequestBody Map<String, Object> formBody) {
 		try {
 			return serviceProviderInvoker.post(request, response, formBody);
-		} catch (Exception e) {
+		} catch (Throwable e) {
 			try {
 				return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).headers(serviceProviderInvoker.getHttpHeaders()).body(objectMapper.writeValueAsString(serviceProviderInvoker.getErrorHandler().handle(e)));
 			} catch (JsonProcessingException e1) {

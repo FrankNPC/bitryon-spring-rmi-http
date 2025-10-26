@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.util.ClassUtils;
 
-import io.bitryon.spring.rmi.http.BeanHelper;
+import io.bitryon.spring.rmi.http.helper.BeanHelper;
 
 @Configuration
 @Import({ServiceProviderController.class})

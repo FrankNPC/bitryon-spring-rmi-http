@@ -5,7 +5,7 @@ import java.lang.reflect.Parameter;
 import java.util.HashMap;
 import java.util.Map;
 
-import io.bitryon.spring.rmi.http.BeanHelper;
+import io.bitryon.spring.rmi.http.helper.BeanHelper;
 
 class BeanParser {
 
