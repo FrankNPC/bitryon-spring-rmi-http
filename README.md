@@ -1,5 +1,5 @@
 
-![Java](https://img.shields.io/badge/Java-1.8-blue?logo=java)
+![Java](https://img.shields.io/badge/Java-1.8+-blue?logo=java)
 ![Maven](https://img.shields.io/badge/Build-Maven-orange?logo=apachemaven)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-brightgreen?logo=springboot)
 ![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey?logo=open-source-initiative)
