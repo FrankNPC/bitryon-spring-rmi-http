@@ -19,7 +19,7 @@ public class BeanHelper {
 		serviceName = PropertyNamingStrategies.SnakeCaseStrategy.INSTANCE.translate(serviceName);
 		serviceName = serviceName.replaceAll("_service_impl$", "");
 		serviceName = serviceName.replaceAll("_impl$", "");
-		serviceName = serviceName.replaceAll("_service$", "");
+		//serviceName = serviceName.replaceAll("_service$", "");
 		return serviceName;
 	}
 

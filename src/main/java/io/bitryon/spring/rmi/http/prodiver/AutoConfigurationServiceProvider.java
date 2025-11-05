@@ -2,6 +2,7 @@ package io.bitryon.spring.rmi.http.prodiver;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -41,8 +42,7 @@ public class AutoConfigurationServiceProvider implements BeanPostProcessor {
 		
 		Method[] methods = clazz.getDeclaredMethods();
 		for (Method method : methods) {
-			if (!Modifier.isStatic(method.getModifiers()) && !Modifier.isPrivate(method.getModifiers())) {
-				
+			if (!Modifier.isStatic(method.getModifiers()) && Modifier.isPublic(method.getModifiers())) {
 				Optional<Provider> methodProvider = Stream.of(method.getAnnotations()).filter(anno->anno instanceof Provider).map(item->(Provider)item).findFirst();
 				if (methodProvider.isPresent()) {
 					String path = BeanHelper.parseMethodName(methodProvider.get(), serviceName, method.getName());
@@ -54,7 +54,7 @@ public class AutoConfigurationServiceProvider implements BeanPostProcessor {
 			}
 		}
 		
-		beans = prepBeans;
+		beans = Collections.unmodifiableMap(prepBeans);
 	}
 
 }
