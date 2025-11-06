@@ -26,7 +26,7 @@
 
  - The class name and method will be translated to path string:
 
-> AccountServiceImpl.login -> account/login.
+> AccountServiceImpl.login(String username, String password) -> account/login.
 > method name in the service should be different.
 
  - The parameters right on the method in types of primitives will be in the URL as query string.
@@ -35,10 +35,10 @@
 
  - Configure serializer and deserializer if needed or leave it to default.
  
-> See [RestClient.builder().messageConverters(HttpMessageConverter)](https://github.com/FrankNPC/bitryon-spring-rmi-http/blob/main/src/main/java/io/bitryon/spring/rmi/http/subscriber/AbstractInvokerClient.java#L103)
+> See [RestClient.builder().messageConverters(HttpMessageConverter)](https://github.com/FrankNPC/bitryon-spring-rmi-http/blob/master/src/main/java/io/bitryon/spring/rmi/http/subscriber/AbstractInvokerClient.java#L103)
 
  - Examples: 
  
-> Server side: [ExampleServiceProvider](https://github.com/FrankNPC/bitryon-spring-rmi-http/blob/main/src/test/java/io/bitryon/spring/rmi/http/prodiver/ExampleServiceProvider.java)
+> Server side: [ExampleServiceProvider](https://github.com/FrankNPC/bitryon-spring-rmi-http/blob/master/src/test/java/io/bitryon/spring/rmi/http/prodiver/ExampleServiceProvider.java)
 
-> Client side: [ExampleServiceSubscriber](https://github.com/FrankNPC/bitryon-spring-rmi-http/blob/main/src/test/java/io/bitryon/spring/rmi/http/subscriber/ExampleServiceSubscriber.java)
+> Client side: [ExampleServiceSubscriber](https://github.com/FrankNPC/bitryon-spring-rmi-http/blob/master/src/test/java/io/bitryon/spring/rmi/http/subscriber/ExampleServiceSubscriber.java)
