@@ -39,10 +39,10 @@ public class ServiceProviderInvoker {
 	@Lazy
 	AutoConfigurationServiceProvider serviceProviderConfiguration;
 
-    @Autowired(required = false)
-    ErrorHandler errorHandler = DEFAULT_ERROR_HANDLER;
+	@Autowired(required = false)
+	ErrorHandler errorHandler = DEFAULT_ERROR_HANDLER;
 
-    @Autowired(required = false)
+	@Autowired(required = false)
 	HttpHeaderTransporter httpHeaderTransporter;
 	
 	public HttpHeaderTransporter getHttpHeaderTransporter() {
