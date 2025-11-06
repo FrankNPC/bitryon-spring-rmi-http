@@ -28,17 +28,18 @@
 
 > AccountServiceImpl.login(String username, String password) -> account/login.
 > method name in the service should be different.
+> so client and server can communicate through HTTP, like the app/h5/SDKs call to the service.
 
  - The parameters right on the method in types of primitives will be in the URL as query string.
- 
+
 > keeping the parameter names by [-parameters].
 
- - Configure serializer and deserializer if needed or leave it to default.
- 
+ - Configure serializer and deserializer if needed or leave it to default jackson ObjectMapper
+
 > See [RestClient.builder().messageConverters(HttpMessageConverter)](https://github.com/FrankNPC/bitryon-spring-rmi-http/blob/master/src/main/java/io/bitryon/spring/rmi/http/subscriber/AbstractInvokerClient.java#L103)
 
  - Examples: 
- 
+
 > Server side: [ExampleServiceProvider](https://github.com/FrankNPC/bitryon-spring-rmi-http/blob/master/src/test/java/io/bitryon/spring/rmi/http/prodiver/ExampleServiceProvider.java)
 
 > Client side: [ExampleServiceSubscriber](https://github.com/FrankNPC/bitryon-spring-rmi-http/blob/master/src/test/java/io/bitryon/spring/rmi/http/subscriber/ExampleServiceSubscriber.java)
